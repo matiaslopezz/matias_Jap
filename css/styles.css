@@ -136,6 +136,24 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
-.checked {
+/* .checked {
   color: orange;
+} */
+
+/* Estilo del menú desplegable */
+#usuario {
+  color: white;
+}
+
+.dropdown-menu {
+  opacity: 0.9;
+  /* background-color: black; */
+}
+
+#profile, #cart, #cerrar-sesion {
+  color:white;
+}
+
+.dropdown-item:hover {
+  background-color: black;
 }

@@ -20,17 +20,73 @@
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <div class="dropdown">
+          <button class="py-2 d-md-inline-block btn dropdown-toggle" style="font-weight:bold" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="my-profile.html" id="profile">Mi perfil</a>
+            <a class="dropdown-item" href="cart.html" id="cart">Ver mi carrito</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="login.html" id="cerrar-sesion">Cerrar sesión</a>
+          </div>
+        </div>
       </div>
     </nav>
-    <div class="container p-5">
-      <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-        <h4 class="alert-heading">¡A trabajar! :)</h4>
-        <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) y Entrega 2 (Fecha de entrega: 30/08/2020).</p>
-        <hr>
-        <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    
+    <main role="main" class="pb-5">
+      <div class="text-center p-4">
+        <h2>Productos</h2>
+        <p class="lead">Verás aquí todos los productos de la categoría Autos.</p>
       </div>
-    </div>
+    
+      <!-- Creamos un formulario asociado al filtrado manual por precio -->
+      <form class="container" id="form-filtrado" method="GET">
+
+        <div class="row">
+          <div class="col text-right">
+              <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                  <label class="btn btn-light active" id="ordenarPrecioAscendente">
+                      <input type="radio" autocomplete="off">Menor precio
+                  </label>
+                  <label class="btn btn-light" id="ordenarPrecioDescendente">
+                      <input type="radio" autocomplete="off">Mayor precio
+                  </label>
+                  <label class="btn btn-light" id="ordenarRelevancia">
+                      <input type="radio" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Más vendidos
+                  </label>
+              </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-end">
+          <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-12 mb-1 container">
+              <div class="row container p-0 m-0">
+                <div class="col">
+                  <p class="font-weight-normal text-right my-2">Precio (USD):</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" id="precioMenor" placeholder="Mínimo">
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" id="precioMayor" placeholder="Máximo">
+                </div>
+                <div class="btn-group" role="group">
+                  <input class="btn btn-light btn-block" type="submit" id="filtrar" value="Filtrar">
+                  <button class="btn btn-link btn-sm" id="limpiarFiltrado">Limpiar</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      </form>
+      <!-- Fin del formulario -->
+    
+      <div class="row">
+        <div class="list-group" id="prod-list-container"></div>
+      </div>
+    </main>
+    
     <footer class="text-muted bg-light">
       <div class="container">
         <p class="float-right">
@@ -47,3 +103,19 @@
     <script src="js/products.js"></script>
   </body>
 </html>
+
+<!-- ALTERNATIVA FORMULARIO -->
+<!-- <form action="" id="form-filtrado" method="GET">
+  <div>
+    <input type="number" id="precioMenor" name="precioMenor" placeholder="Mínimo">
+    <input type="number" id="precioMayor" name="precioMayor" placeholder="Máximo">       
+    <input type="submit" id="filtrar" value="Filtrar">
+
+    <p>
+      Ordenar publicaciones <br>
+      <button type="button" id="ordenarPrecioAscendente">Menor precio</button>
+      <button type="button" id="ordenarPrecioDescendente">Mayor precio</button>
+      <button type="button" id="ordenarRelevancia">Más relevantes</button>
+    </p>
+  </div>
+</form> -->

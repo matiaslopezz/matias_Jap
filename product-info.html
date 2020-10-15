@@ -13,6 +13,51 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    /* Estilos de la puntuación por estrellas */
+    .checked {
+      color: skyblue;
+    }
+
+    .unchecked {
+      color: lightgrey;
+    }
+
+    #star-rating .unchecked:hover {
+      color: lightblue;
+    }
+
+    /* Estilos para el carrusel */
+   .carousel-control-prev {
+      background-color: gray;
+      width: 5%;
+    }
+
+    .carousel-control-next {
+      background-color: gray;
+      width: 5%;
+    }
+
+    .carousel-inner {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      padding-top: 20px;
+    }
+
+    #product-images {
+      text-align: center;
+      margin-left: 55px;
+      width: 120%;
+    }
+
+    #product-images-2 {
+      text-align: center;
+      margin-left: 220px;
+      width: 120%;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,17 +67,108 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <div class="dropdown">
+        <button class="py-2 d-md-inline-block btn dropdown-toggle" style="font-weight:bold" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </button>
+        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="my-profile.html" id="profile">Mi perfil</a>
+          <a class="dropdown-item" href="cart.html" id="cart">Ver mi carrito</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="login.html" id="cerrar-sesion">Cerrar sesión</a>
+        </div>
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Descripción del producto</h2>
+        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
+        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
+          seleccionado previamente, siempre se visualizará la información de: <strong>Chevrolet Onix Joy</strong>.</p>
+      </div>
+      <h3 id="productName"></h3>
+      <hr class="my-3">
+      <dl>
+        <dt>Descripción</dt>
+        <dd>
+          <p id="productDescription"></p>
+        </dd>
+
+        <dt>Costo del producto</dt>
+        <dd>
+          <p id="productCost"></p>
+        </dd>
+
+        <dt>Cantidad de productos vendidos</dt>
+        <dd>
+          <p id="productSoldCount"></p>
+        </dd>
+
+        <dt>Imágenes ilustrativas</dt>
+        <!-- <dd>
+          <div class="row text-center text-lg-left pt-2" id="product-images">
+          </div>
+        </dd> -->
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row" id="product-images"></div>
+            </div>
+            <div class="carousel-item">
+              <div class="row" id="product-images-2"></div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </dl> 
     </div>
-  </div>
+
+    <div class="container mt-5">
+      <h3>Productos relacionados</h3>
+      <hr class="my-3">
+      <div id="related-products"></div>
+    </div>
+
+    <div class="container mt-5">
+      <div>
+        <h3>Opiniones sobre el producto</h3>
+        <hr class="my-3">
+      </div>
+      <div id="product-comment-container"></div>
+    </div>
+
+    <div class="container mt-5" id="form-comment-score">
+      <h3>Deje aquí un comentario</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-5">
+            <textarea class="form-control" cols="" id="comment" placeholder="Escriba un comentario"></textarea>
+          </div>
+          <div class="col-1">
+            <button type="button" class="btn btn-primary ml-1" id="send-comment">Enviar</button>
+          </div>
+      </div>
+      <div class="main ml-3" id="star-rating">
+        <i class="fa fa-star unchecked" id="one"></i>
+        <i class="fa fa-star unchecked" id="two"></i>
+        <i class="fa fa-star unchecked" id="three"></i>
+        <i class="fa fa-star unchecked" id="four"></i>
+        <i class="fa fa-star unchecked" id="five"></i>
+      </div>
+    </div>
+
+  </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
