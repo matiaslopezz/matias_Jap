@@ -63,54 +63,130 @@
     </div>
 
     <div class="container mt-5">
+      <h3>Dirección de envío</h3>
+      <hr class="my-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-1">
+            <label for="country">País</label>
+            <input type="text" name="adress" id="country" form="cart_form">
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-3">
+            <label for="street">Calle</label>
+            <input type="text" name="adress" id="street" class="container" form="cart_form"><br><br>
+            <label for="corner">Esquina</label>
+            <input type="text" name="adress" id="corner" form="cart_form">
+          </div>
+          <div class="col-1">
+            <label for="number">Número</label>
+            <input type="number" name="adress" id="number" min="0" form="cart_form"><br>
+          </div>  
+        </div><br>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h3>Método de envío</h3>
+      <hr class="my-3">
       <div>
-        <h3>Método de envío</h3>
-        <hr class="my-3">
-          <form action="" method="GET" id="form1">
-            País destino: <input type="text" placeholder="País"><br><br>
-            Dirección: <input type="text" placeholder="Calle" required> - <input type="text" placeholder="Número"> - <input type="text" placeholder="Esquina"><br><br>
-            <p>Tipo de envío: </p>
-            <input type="radio" name="deliver" id="standard" value="standard" required>
-            <label for="standard">Standard</label><br>
-            <input type="radio" name="deliver" id="express" value="express">
-            <label for="express">Express</label><br>
-            <input type="radio" name="deliver" id="premium" value="premium">
-            <label for="premium">Premium</label>
-          <!-- </form> -->
-        </div>
+        <input type="radio" name="deliver" id="standard" value="standard" form="cart_form">
+        <label for="standard">Standard - 12 a 15 días - (5%)</label><br>
+        <input type="radio" name="deliver" id="express" value="express" form="cart_form">
+        <label for="express">Express - 5 a 8 días - (7%)</label><br>
+        <input type="radio" name="deliver" id="premium" value="premium" form="cart_form">
+        <label for="premium">Premium - 2 a 5 días - (15%)</label>
       </div>
+    </div>
 
-      <div class="container mt-5">
-        <div>
-          <h3>Forma de pago</h3>
-          <hr class="my-3">
-          <div>
-            <p>Seleccione un método de pago:</p>
-            <!-- <form action="" method="GET" id="form2"> -->
-              <input type="radio" name="payment" value="bank-transfer" required>
-              <label for="bank-trasnfer">Transferencia bancaria</label><br>
-              <input type="radio" name="payment" value="credit-card">
-              <label for="credit-card">Tarjeta de crédito</label>
-            <!-- </form> -->
+    <div class="container mt-5">
+      <h3>Forma de pago</h3>
+      <hr class="my-3">
+      <div>
+        <p>Seleccione un método de pago:</p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Método de Pago
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="radio" name="payment" id="credit-card" value="credit-card" onclick="validatePayForm()" form="cart_form">
+                <label for="credit-card">Tarjeta de crédito</label>
+                <hr>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-5">
+                      <label for="credit-card">Nümero de tarjeta</label>
+                      <input type="number" name="credit-card" id="credit-card-number" form="cart_form">                      
+                    </div>
+                    <div class="col-5">
+                      <label for="credit-card">Seguridad</label>
+                      <input type="number" name="credit-card" id="security-number" min="0" form="cart_form">
+                    </div>
+                  </div><br>
+                  <div clas="row">
+                    <p>Vencimiento(Mes/Año)</p>
+                    <select name="credit-card" id="month-expiring-date">
+                      <option value="January">Enero</option>
+                      <option value="Febrero">Febrero</option>
+                      <option value="Marzo">Marzo</option>
+                      <option value="Abril">Abril</option>
+                      <option value="Mayo">Mayo</option>
+                      <option value="Junio">Junio</option>
+                      <option value="Julio">Julio</option>
+                      <option value="Agosto">Agosto</option>
+                      <option value="Setiembre">Setiembre</option>
+                      <option value="Octubre">Octubre</option>
+                      <option value="Noviembre">Noviembre</option>
+                      <option value="Diciembre">Diciembre</option>
+                    </select>
+                    /
+                    <input type="number" name="credit-card" id="year-expiring-date" form="cart_form">
+                  </div>
+                </div><br>
+                <input type="radio" name="payment" id="bank-transfer" value="bank-transfer" onclick="validatePayForm()" form="cart_form">
+                <label for="bank-transfer">Transferencia bancaria</label>
+                <hr>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-5">
+                      <label for="bank-transfer">Número de cuenta</label>
+                      <input type="text" name="bank-transfer" id="bank-transfer-count" form="cart_form">
+                    </div>
+                  </div>
+                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="close-modal">Cerrar</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="container mt-5">
-        <div>
-          <h3>Total a pagar</h3>
-          <hr class="my-3">
-          <div><strong>Costo total por artículo:</strong>
-            <div id="cost-per-article"></div><br>
-          </div>
-          <div id="subtotal"></div>
-          <div id="total"></div>
-          <div>
-            <input type="submit" class="btn btn-primary btn-lg ml-1" id="confirm-payment" value="Confirmar compra">
-          </div>
-          </form>
-        </div>
+    <div class="container mt-5">
+      <h3>Total a pagar</h3>
+      <hr class="my-3">
+      <div><strong>Costo total por artículo:</strong>
+        <div id="cost-per-article"></div><br>
       </div>
+      <div id="subtotal"></div>
+      <div id="delivery-cost"></div>
+      <div id="total" class=""></div>
+      <form action="" method="GET" id="cart_form">
+        <input type="submit" class="btn btn-primary btn-lg" id="confirm-payment" value="Confirmar compra">
+      </form>
+    </div>
   </main>
 
   <div id="spinner-wrapper">
