@@ -52,26 +52,98 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <main role="main" class="pb-5">
+    <div class="text-center p-4">
+      <h2>Mi Perfil</h2>
+      <p class="lead">Verás aquí toda la información relacionada a tu perfil.</p>
     </div>
-  </div>
+    
+    <div class="container mt-5">
+      <h3>Información Personal</h3>
+      <hr class="my-3">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p>Nombre: <span id="saved-name"></span></p>
+            <p>Apellido: <span id="saved-surname"></span></p>
+            <p>Edad: <span id="saved-age"></span></p>
+            <p>E-mail: <span id="saved-email"></span></p>
+            <p>Teléfono de contacto: <span id="saved-phone"></span></p>
+          </div>
+          <div class="col-3" id="profile-image"></div>
+        </div>
+        
+      </div>
+      
+      <!-- Comienzo del Modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Modificar información
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel">Actualizar información</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-5">
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" id="name" form="profile-form" required>
+                    <br><br>                    
+                    <label for="age">Edad</label>
+                    <input type="number" name="age" id="age" form="profile-form" required>
+                    <br><br>
+                    <label for="phone-number">Teléfono de contacto</label>
+                    <input type="number" name="phone-number" id="phone-number" form="profile-form" required>
+                    <br><br>
+                  </div>
+                  <div class="col-5">
+                    <label for="surname">Apellido</label>
+                    <input type="text" name="surname" id="surname" min="0" form="profile-form" required>
+                    <br><br>
+                    <label for="email">E-mail</label>
+                    <input type="text" name="email" id="email" form="profile-form" required>
+                  </div>
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="close-modal">Cerrar</button>
+              <form action="" method="GET" id="profile-form">
+                <input type="submit" class="btn btn-primary" value="Guardar cambios">                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin del modal -->
+
+    </div>
+
+  </main>
+
   <footer class="text-muted bg-light">
     <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+
   <div class="alert fade alert-success" role="alert" id="alertResult">
     <span id="resultSpan"></span>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
